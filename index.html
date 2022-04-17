@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="shortcut icon" href="./assets/techno.svg" type="image/x-icon" />
+    <script
+      src="https://kit.fontawesome.com/a9a09ba7c3.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Techno</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- v-if="produto.length > 0" -->
+      <section class="modal" v-if="produto" @click="closeModal()">
+        <div class="modal-container">
+          <img
+            src="./assets/xmark-solid.svg"
+            class="modal-fechar"
+            @click="closeModal()"
+          />
+          <div class="modal-img">
+            <img :src="produto.img" :alt="produto.nome" />
+          </div>
+          <div class="modal-dados">
+            <span class="modal-preco">{{ produto.preco | priceNumber() }}</span>
+            <h2 class="modal-titulo">{{ produto.nome }}</h2>
+            <p class="modal-descricao">{{ produto.descricao }}</p>
+            <button class="modal-btn">Adicionar item</button>
+          </div>
+          <div class="avaliacoes">
+            <h2 class="avaliacoes-subtitulo">Avaliações</h2>
+            <ul>
+              <li class="avaliacao" v-for="avaliacao in produto.reviews">
+                <p class="avaliacao-descricao">{{ avaliacao.descricao }}</p>
+                <p class="avaliacao-usuario">
+                  {{ avaliacao.nome }} |
+                  <img
+                    class="avaliacao-star"
+                    v-for="star in avaliacao.estrelas"
+                    src="./assets/star-solid.svg"
+                  />
+                </p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class="produtos">
+        <div
+          class="produto"
+          v-for="produto in produtos"
+          :key="produto.id"
+          @click="getProduto(produto.id)"
+        >
+          <img :src="produto.img" :alt="produto.nome" class="produto-img" />
+          <div class="produto-info">
+            <span class="produto-preco"
+              >{{ produto.preco | priceNumber(produto.preco) }}</span
+            >
+            <h2 class="produto-titulo">{{ produto.nome }}</h2>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script src="./vue.min.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
