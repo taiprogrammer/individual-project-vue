@@ -4,6 +4,8 @@ const vm = new Vue({
     return {
       produtos: new Array(),
       produto: false,
+      carrinho: new Array(),
+      carrinhoTotal: 0,
     };
   },
   methods: {
@@ -19,11 +21,18 @@ const vm = new Vue({
         .then((produto) => produto.json())
         .then((produto) => {
           this.produto = produto;
-        })
-      console.log(this.produto);
+        });
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     },
     closeModal() {
       this.produto = false;
+    },
+    addItem(item) {
+      this.carrinho.push(item);
+      this.carrinhoTotal++;
     },
   },
   mounted() {
@@ -31,9 +40,9 @@ const vm = new Vue({
   },
   filters: {
     priceNumber(value) {
-      return value.toLocaleString('pt-BR', {
+      return value.toLocaleString("pt-BR", {
         style: "currency",
-        currency: "BRL"
+        currency: "BRL",
       });
     },
   },

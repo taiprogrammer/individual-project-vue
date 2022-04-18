@@ -16,11 +16,30 @@ body {
   padding: 0px 80px;
 }
 
+/* Header */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.logo {
+  width: 80px;
+}
+
+.carrinho-menu {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
 /* Lista de Produtos */
 
 .produtos {
   max-width: 900px;
-  margin: 100px auto 0 auto;
+  margin: 80px auto 0 auto;
 }
 
 .produto {
@@ -88,7 +107,6 @@ body {
 
 .modal-img {
   grid-column: 1;
-  margin-top: 50px;
   box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.1), 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
