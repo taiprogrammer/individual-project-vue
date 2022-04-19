@@ -19,10 +19,9 @@
         <img class="logo" src="./assets/techno.svg" alt="Techno" />
         <div class="carrinho-menu">
           {{ carrinhoTotal }}
-          <img src="./assets/carrinho.svg" alt="" />
+          <img src="./assets/carrinho.svg" alt="" @click="getCart" />
         </div>
       </header>
-      {{carrinho}}
       <!--Produtos-->
       <section class="produtos">
         <div
@@ -74,6 +73,33 @@
                 </p>
               </li>
             </ul>
+          </div>
+        </div>
+      </section>
+      <!--Modal Carrinho-->
+      <section class="modal" v-if="cart && carrinho.length > 0">
+        <div class="modal-container-carrinho">
+          <img
+            src="./assets/xmark-solid.svg"
+            class="modal-fechar-carrinho"
+            @click="closeCart()"
+          />
+          <div class="modal-dados-carrinho">
+            <div class="card-item" v-for="item in carrinho" :key="item.id">
+              <div class="item-details">
+                <img :src="item.img" />
+                <div class="product-name">
+                  <p>{{ item.nome }}</p>
+                  <b>{{ item.preco | priceNumber }}</b>
+                </div>
+              </div>
+              <!-- <div>
+                <button>+</button>
+                <input class="input-cart" disabled />
+                <button>-</button>
+              </div> -->
+            </div>
+            <h4>Total:</h4>
           </div>
         </div>
       </section>

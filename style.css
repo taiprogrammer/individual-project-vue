@@ -105,6 +105,17 @@ body {
   border-radius: 4px;
 }
 
+.modal-container-carrinho {
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  padding: 50px;
+  border-radius: 4px;
+}
+
 .modal-img {
   grid-column: 1;
   box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.1), 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -117,6 +128,10 @@ body {
 
 .modal-dados {
   grid-column: 2;
+  max-width: 600px;
+}
+
+.modal-dados-carrinho {
   max-width: 600px;
 }
 
@@ -175,4 +190,44 @@ body {
   height: 3.125rem;
   border: none;
   background: transparent;
+}
+
+.modal-fechar-carrinho {
+  position: relative;
+  cursor: pointer;
+  padding: 5px;
+  height: 3.125rem;
+  border: none;
+  background: transparent;
+  bottom: 36px;
+  left: 30px;
+}
+
+.card-item {
+  align-items: center;
+  border-radius: 4px;
+  display: flex;
+  max-width: 600px;
+  width: 500px;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  margin-top: 15px;
+  justify-content: space-between;
+}
+
+.card-item img {
+  max-width: 115px;
+}
+
+.input-cart {
+  width: 25px;
+}
+
+.item-details {
+  display: flex;
+  align-items: center;
+}
+
+.product-name {
+  margin-left: 10px;
 }

@@ -6,6 +6,7 @@ const vm = new Vue({
       produto: false,
       carrinho: new Array(),
       carrinhoTotal: 0,
+      cart: false,
     };
   },
   methods: {
@@ -33,6 +34,17 @@ const vm = new Vue({
     addItem(item) {
       this.carrinho.push(item);
       this.carrinhoTotal++;
+      this.produto.estoque--;
+    },
+    getCart() {
+      this.cart = true;
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    },
+    closeCart() {
+      this.cart = false;
     },
   },
   mounted() {
