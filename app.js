@@ -36,7 +36,6 @@ const vm = new Vue({
       this.produto.estoque--;
       const { id, nome, preco, img } = this.produto;
       this.carrinho.push({ id, nome, preco, img });
-      console.log(this.produto.estoque);
     },
     getCart() {
       this.cart = true;
@@ -54,6 +53,11 @@ const vm = new Vue({
         this.cart = false;
       }
     },
+    checkLocalStorage() {
+      if (window.localStorage.carrinho) {
+        this.carrinho = JSON.parse(window.localStorage.carrinho);
+      }
+    },
   },
   computed: {
     getCartLength() {
@@ -65,6 +69,12 @@ const vm = new Vue({
   },
   created() {
     this.getProducts();
+    this.checkLocalStorage();
+  },
+  watch: {
+    carrinho() {
+      window.localStorage.carrinho = JSON.stringify(this.carrinho);
+    },
   },
   filters: {
     priceNumber(value) {
