@@ -18,8 +18,8 @@
       <header class="header">
         <img class="logo" src="./assets/techno.svg" alt="Techno" />
         <div class="carrinho-menu">
-          {{ carrinhoTotal }}
           <img src="./assets/carrinho.svg" alt="" @click="getCart" />
+          {{getCartLength}}
         </div>
       </header>
       <!--Produtos-->
@@ -40,12 +40,12 @@
         </div>
       </section>
       <!--Modal Produto-->
-      <section class="modal" v-if="produto" @click="closeModal()">
+      <section class="modal" v-if="produto" @click="closeModal">
         <div class="modal-container">
           <img
             src="./assets/xmark-solid.svg"
             class="modal-fechar"
-            @click="closeModal()"
+            @click="closeModal"
           />
           <div class="modal-img">
             <img :src="produto.img" :alt="produto.nome" />
@@ -54,9 +54,14 @@
             <span class="modal-preco">{{ produto.preco | priceNumber() }}</span>
             <h2 class="modal-titulo">{{ produto.nome }}</h2>
             <p class="modal-descricao">{{ produto.descricao }}</p>
-            <button @click="addItem(produto)" class="modal-btn">
+            <button
+              v-if="produto.estoque > 0"
+              @click="addItem"
+              class="modal-btn"
+            >
               Adicionar item
             </button>
+            <button v-else class="modal-btn" disabled>Produto Esgotado!</button>
           </div>
           <div class="avaliacoes">
             <h2 class="avaliacoes-subtitulo">Avaliações</h2>
@@ -85,21 +90,29 @@
             @click="closeCart()"
           />
           <div class="modal-dados-carrinho">
-            <div class="card-item" v-for="item in carrinho" :key="item.id">
+            <div
+              class="card-item"
+              v-for="(item, index) in carrinho"
+              :key="item.id"
+            >
               <div class="item-details">
                 <img :src="item.img" />
                 <div class="product-name">
+                  {{ item.estoque }}
                   <p>{{ item.nome }}</p>
                   <b>{{ item.preco | priceNumber }}</b>
                 </div>
               </div>
-              <!-- <div>
-                <button>+</button>
-                <input class="input-cart" disabled />
-                <button>-</button>
-              </div> -->
+              <img
+                src="./assets/xmark-solid.svg"
+                class="excluir-item"
+                alt=""
+                @click="removeItemFromCart(index)"
+              />
             </div>
-            <h4>Total:</h4>
+            <h4 class="total-price-cart">
+              Total: {{ getTotalPrice | priceNumber }}
+            </h4>
           </div>
         </div>
       </section>
