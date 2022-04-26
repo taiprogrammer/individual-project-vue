@@ -34,8 +34,8 @@ const vm = new Vue({
     },
     addItem() {
       this.produto.estoque--;
-      const { id, nome, preco, img } = this.produto;
-      this.carrinho.push({ id, nome, preco, img });
+      const { id, nome, preco, img, estoque } = this.produto;
+      this.carrinho.push({ id, nome, preco, img, estoque });
     },
     getCart() {
       this.cart = true;

@@ -98,13 +98,12 @@
               <div class="item-details">
                 <img :src="item.img" />
                 <div class="product-name">
-                  {{ item.estoque }}
                   <p>{{ item.nome }}</p>
                   <b>{{ item.preco | priceNumber }}</b>
                 </div>
               </div>
               <img
-                src="./assets/xmark-solid.svg"
+                src="./assets/trash-solid.svg"
                 class="excluir-item"
                 alt=""
                 @click="removeItemFromCart(index)"
