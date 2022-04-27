@@ -115,6 +115,19 @@
           </div>
         </div>
       </section>
+      <!--Alerta-->
+      <div class="alerta" id="alerta">
+        <div class="alerta-content">
+          <img class="alerta-imagem" src="./assets/correct.png" alt="" />
+          <p class="alerta-mensagem">{{ mensagemAlerta }}</p>
+          <img
+            class="alerta-close"
+            @click="closeToast"
+            src="./assets/xmark-solid.svg"
+            alt=""
+          />
+        </div>
+      </div>
     </div>
     <script src="./vue.min.js"></script>
     <script src="./app.js"></script>
