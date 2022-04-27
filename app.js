@@ -33,14 +33,15 @@ const vm = new Vue({
     },
     addItem() {
       const toast = document.getElementById("alerta");
+      const { id, nome, preco, img, estoque } = this.produto;
       this.mensagemAlerta = "Item adicionado";
       this.produto.estoque--;
-      const { id, nome, preco, img, estoque } = this.produto;
       this.carrinho.push({ id, nome, preco, img, estoque });
       toast.classList.add("ativo");
       toast.style.display = "block";
       this.alertaAtivo = true;
       this.scrollToTop();
+      this.closeToastInstantly();
     },
     scrollToTop() {
       window.scrollTo({
@@ -66,6 +67,7 @@ const vm = new Vue({
       toast.style.display = "block";
       this.alertaAtivo = true;
       this.scrollToTop();
+      this.closeToastInstantly();
     },
     checkLocalStorage() {
       if (window.localStorage.carrinho) {
@@ -75,6 +77,12 @@ const vm = new Vue({
     closeToast() {
       const toast = document.getElementById("alerta");
       toast.style.display = "none";
+    },
+
+    closeToastInstantly() {
+      setInterval(() => {
+        document.getElementById("alerta").style.display = "none";
+      }, 3500);
     },
   },
   computed: {
@@ -91,6 +99,9 @@ const vm = new Vue({
     this.getProducts();
     this.checkLocalStorage();
   },
+  // mounted() {
+  //   this.closeToastInstantly();
+  // },
   watch: {
     carrinho() {
       window.localStorage.carrinho = JSON.stringify(this.carrinho);

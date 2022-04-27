@@ -1,0 +1,12 @@
+{
+  "name": "techno",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "build-css": "tailwindcss build src/styles.css -o public/styles.css"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.0.24"
+  }
+}

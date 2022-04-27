@@ -66,6 +66,7 @@ body {
 .produto-titulo {
   font-size: 3rem;
   line-height: 1;
+  font-weight: 600;
 }
 
 .produto-preco {
