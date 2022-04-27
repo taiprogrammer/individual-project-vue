@@ -64,7 +64,9 @@ const vm = new Vue({
       return this.carrinho.length;
     },
     getTotalPrice() {
-      return 6000;
+      const price = this.carrinho.map((item) => item.preco);
+      const totalPrice = price.reduce((prev, current) => prev + current, 0);
+      return totalPrice;
     },
   },
   created() {
