@@ -131,7 +131,7 @@ const vm = new Vue({
       });
     },
   },
-  components: {
-    CounterButtonLocal,
-  },
+  // components: {
+  //   CounterButtonLocal,
+  // },
 });
