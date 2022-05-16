@@ -1,3 +1,19 @@
+//Componente Global
+// Vue.component("CounterButton", {
+//   data() {
+//     return {
+//       counter: 0,
+//     };
+//   },
+//   template: `<button @click='counter++'>Counter {{ counter }}</button>`,
+// });
+
+//Componente Local
+// const CounterButtonLocal = {
+//   name: "CounterButtonLocal",
+//   template: `<button>Botão Local</button>`,
+// };
+
 const vm = new Vue({
   el: "#app",
   data() {
@@ -114,5 +130,8 @@ const vm = new Vue({
         currency: "BRL",
       });
     },
+  },
+  components: {
+    CounterButtonLocal,
   },
 });
