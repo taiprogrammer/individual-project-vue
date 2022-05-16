@@ -14,6 +14,10 @@
 //   template: `<button>Botão Local</button>`,
 // };
 
+import TimeWeather from "./components/TimeWeather.js";
+import ButtonCounter from "./components/ButtonCounter.js";
+// Vue.component("ButtonCounter", ButtonCounter);
+
 const vm = new Vue({
   el: "#app",
   data() {
@@ -131,7 +135,8 @@ const vm = new Vue({
       });
     },
   },
-  // components: {
-  //   CounterButtonLocal,
-  // },
+  components: {
+    TimeWeather,
+    ButtonCounter,
+  },
 });
