@@ -16,7 +16,6 @@
 
 import TimeWeather from "./components/TimeWeather.js";
 import ButtonCounter from "./components/ButtonCounter.js";
-// Vue.component("ButtonCounter", ButtonCounter);
 
 const vm = new Vue({
   el: "#app",
@@ -119,9 +118,6 @@ const vm = new Vue({
     this.getProducts();
     this.checkLocalStorage();
   },
-  // mounted() {
-  //   this.closeToastInstantly();
-  // },
   watch: {
     carrinho() {
       window.localStorage.carrinho = JSON.stringify(this.carrinho);

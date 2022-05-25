@@ -13,7 +13,7 @@ export default {
       console.log(this.time);
     },
   },
-  created() {
+  mounted() {
     this.getTime();
   },
 };
